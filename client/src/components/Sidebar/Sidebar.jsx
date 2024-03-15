@@ -2,14 +2,14 @@ import { Avatar, Box, Flex, Link, Tooltip } from "@chakra-ui/react";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
-  CreatePostLogo,
   InstagramLogo,
   InstagramMobileLogo,
-  NotificationsLogo,
-  SearchLogo,
 } from "../../assets/constants";
 import { AiFillHome } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
+import { IoIosSearch } from "react-icons/io";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const Sidebar = () => {
   const sideBarItems = [
@@ -19,15 +19,15 @@ const Sidebar = () => {
       link: "/",
     },
     {
-      icon: <SearchLogo />,
+      icon: <IoIosSearch/>,
       text: "Search",
     },
     {
-      icon: <NotificationsLogo />,
+      icon: <IoMdHeartEmpty/>,
       text: "Notifications",
     },
     {
-      icon: <CreatePostLogo />,
+      icon: <AiOutlinePlusCircle/>,
       text: "Create",
     },
     {
@@ -73,19 +73,10 @@ const Sidebar = () => {
           <InstagramMobileLogo />
         </Link>
         <Flex direction={"column"} gap={5} cursor={"pointer"}>
-          {sideBarItems.map((item, index) => {
-            <Tooltip
-              key={index}
-              hasArrow
-              label={item.text}
-              placement="right"
-              ml={1}
-              openDelay={500}
-              display={{ base: "block", md: "none" }}
-            >
-              <Link
+            <Flex direction={"row"} gap={2}>
+            <Link
                 display={"flex"}
-                to={item.link || null}
+                to={"/"}
                 as={RouterLink}
                 alignItems={"center"}
                 gap={4}
@@ -93,13 +84,85 @@ const Sidebar = () => {
                 borderRadius={6}
                 p={2}
                 w={{ base: 10, md: "full" }}
+                mt={"auto"}
                 justifyContent={{ base: "center", md: "flex-start" }}
               >
-                {item.icon}
-                <Box display={{ base: "none", md: "block" }}>{item.text}</Box>
+                <AiFillHome size={25}/>
+                <Box display={{ base: "none", md: "block" }}>Home</Box>
               </Link>
-            </Tooltip>
-          })}
+            </Flex>
+            <Flex direction={"row"} gap={2}>
+            <Link
+                display={"flex"}
+                to={"/search"}
+                as={RouterLink}
+                alignItems={"center"}
+                gap={4}
+                _hover={{ bg: "whiteAlpha.400" }}
+                borderRadius={6}
+                p={2}
+                w={{ base: 10, md: "full" }}
+                mt={"auto"}
+                justifyContent={{ base: "center", md: "flex-start" }}
+              >
+                <IoIosSearch size={25}/>
+                <Box display={{ base: "none", md: "block" }}>Search</Box>
+              </Link>
+            </Flex>
+            <Flex direction={"row"} gap={2}>
+            <Link
+                display={"flex"}
+                to={"/notifications"}
+                as={RouterLink}
+                alignItems={"center"}
+                gap={4}
+                _hover={{ bg: "whiteAlpha.400" }}
+                borderRadius={6}
+                p={2}
+                w={{ base: 10, md: "full" }}
+                mt={"auto"}
+                justifyContent={{ base: "center", md: "flex-start" }}
+              >
+                <IoMdHeartEmpty size={25}/>
+                <Box display={{ base: "none", md: "block" }}>Notifications</Box>
+              </Link>
+            </Flex>
+            <Flex direction={"row"} gap={2}>
+            <Link
+                display={"flex"}
+                to={"/create-post"}
+                as={RouterLink}
+                alignItems={"center"}
+                gap={4}
+                _hover={{ bg: "whiteAlpha.400" }}
+                borderRadius={6}
+                p={2}
+                w={{ base: 10, md: "full" }}
+                mt={"auto"}
+                justifyContent={{ base: "center", md: "flex-start" }}
+              >
+                <AiOutlinePlusCircle size={25}/>
+                <Box display={{ base: "none", md: "block" }}>Create</Box>
+              </Link>
+            </Flex>
+            <Flex direction={"row"} gap={2}>
+            <Link
+                display={"flex"}
+                to={"/profile"}
+                as={RouterLink}
+                alignItems={"center"}
+                gap={4}
+                _hover={{ bg: "whiteAlpha.400" }}
+                borderRadius={6}
+                p={2}
+                w={{ base: 10, md: "full" }}
+                mt={"auto"}
+                justifyContent={{ base: "center", md: "flex-start" }}
+              >
+                <Avatar size={"sm"} name="Kaarti Patel" src="/profilepic.png" />
+                <Box display={{ base: "none", md: "block" }}>Profile</Box>
+              </Link>
+            </Flex>
         </Flex>
         <Tooltip
               hasArrow
