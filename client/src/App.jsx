@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
 import Auth from "./pages/Auth";
 import PageLayout from "./Layouts/PageLayout/PageLayout";
+import Profile from "./pages/Profile";
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/auth" element={<Auth/>}/>
-          <Route path="/sign-in" element={<SignIn/>}/>
+          <Route path="/:username" element={<Profile/>}/>
         </Routes>
       </PageLayout>
     </>
