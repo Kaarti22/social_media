@@ -10,6 +10,7 @@ function App() {
 
   return (
     <>
+    
       <PageLayout showSideBar={showSideBar}>
         <Routes>
           <Route path="/" element={<Home/>}/>
